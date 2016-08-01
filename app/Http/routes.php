@@ -14,3 +14,22 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('github/login', 'APIController@ghlogin');
+Route::get('github/callback', 'APIController@ghcallback');
+
+Route::get('facebook/login', 'APIController@fblogin');
+Route::get('facebook/callback', 'APIController@fbcallback');
+
+Route::get('google/login', 'APIController@gllogin');
+Route::get('google/callback', 'APIController@glcallback');
+
+Route::get('link/login', 'APIController@lilogin');
+Route::get('link/callback', 'APIController@licallback');
+
+Route::get('insta/login', 'APIController@inlogin');
+Route::get('insta/callback', 'APIController@incallback');
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
