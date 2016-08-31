@@ -24,6 +24,7 @@ class APIController extends Controller
             $user->email= $details->email;
             $user->avatar = $details->avatar;
             $user->API = "github";
+            $user->role = "user";
             $user->password=Hash::make('github123');
             $user->save();
         });
@@ -50,6 +51,7 @@ class APIController extends Controller
             $user->email= $details->email;
             $user->avatar = $details->avatar;
             $user->API = "facebook";
+            $user->role = "user";
             $user->password = Hash::make('facebook123');
             $user->save();
         });
@@ -77,6 +79,7 @@ class APIController extends Controller
             $user->email= $details->email;
             $user->avatar = $details->avatar;
             $user->API = "google";
+            $user->role = "user";
             $user->password = Hash::make('google123');
             $user->save();
         });
@@ -103,6 +106,7 @@ class APIController extends Controller
             $user->email= $details->email;
             $user->avatar = $details->avatar;
             $user->API = "linkedin";
+            $user->role = "user";
             $user->password = Hash::make('linkedin123');
             $user->save();
         });
@@ -129,6 +133,7 @@ class APIController extends Controller
             $user->email= $details->email;
             $user->avatar = $details->avatar;
             $user->API = "instagram";
+            $user->role = "user";
             $user->password = Hash::make('instagram123');
             dd($details);
             //$user->save();

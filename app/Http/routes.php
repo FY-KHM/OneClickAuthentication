@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Developer Dashboard
+Route::get('/dev/dashboard','DeveloperController@admin');
+Route::get('/dev/users','DeveloperController@userinfo');
+Route::get('/dev/logs','DeveloperController@logs');
+
 Route::get('github/login', 'APIController@ghlogin');
 Route::get('github/callback', 'APIController@ghcallback');
 
