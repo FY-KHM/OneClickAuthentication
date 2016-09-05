@@ -19,6 +19,7 @@ Route::get('/', function () {
 Route::get('/dev/dashboard','DeveloperController@admin');
 Route::get('/dev/users','DeveloperController@userinfo');
 Route::get('/dev/logs','DeveloperController@logs');
+Route::get('/dev/settings','DeveloperController@settings');
 
 Route::get('github/login', 'APIController@ghlogin');
 Route::get('github/callback', 'APIController@ghcallback');

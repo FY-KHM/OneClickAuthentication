@@ -12,7 +12,7 @@ class DeveloperController extends Controller
 
     public function admin(){
     	
-    	if(Auth::check())
+    	/*if(Auth::check())
     	{
     		$user = Auth::user();
 	    	if($user->role=="developer")
@@ -26,13 +26,18 @@ class DeveloperController extends Controller
     	}	
     	else{
     		return redirect('/');	
-    	}
+    	}*/
+        return view('ind');
     	
     }
 
     public function logs(){
 
     	return view('logview');
+    }
+    public function settings(){
+
+        return view('settings');
     }
 
     public function userinfo()

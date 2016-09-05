@@ -5,9 +5,9 @@
 		<!-- Basic -->
 		<meta charset="UTF-8">
 
-		<title>User Information</title>
+		<title>Developer Dashboard</title>
 		<meta name="keywords" content="Developer Template" />
-		<meta name="description" content="Developer Generic Template">
+		<meta name="description" content="Developer Generic Template" />
 
 		<!-- Mobile Metas -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -22,8 +22,9 @@
 		<link rel="stylesheet" href="/assets/vendor/bootstrap-datepicker/css/datepicker3.css" />
 
 		<!-- Specific Page Vendor CSS -->
-		<link rel="stylesheet" href="/assets/vendor/select2/select2.css" />
-		<link rel="stylesheet" href="/assets/vendor/jquery-datatables-bs3/assets/css/datatables.css" />
+		<link rel="stylesheet" href="/assets/vendor/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css" />
+		<link rel="stylesheet" href="/assets/vendor/bootstrap-multiselect/bootstrap-multiselect.css" />
+		<link rel="stylesheet" href="/assets/vendor/morris/morris.css" />
 
 		<!-- Theme CSS -->
 		<link rel="stylesheet" href="/assets/stylesheets/theme.css" />
@@ -36,10 +37,72 @@
 
 		<!-- Head Libs -->
 		<script src="/assets/vendor/modernizr/modernizr.js"></script>
+
+<style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+input:checked + .slider {
+  background-color: #2196F3;
+}
+input + .slider{
+	
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+</style>
+
 	</head>
 	<body>
 		<section class="body">
-<!-- start: header -->
+
+			<!-- start: header -->
 			<header class="header">
 				<div class="logo-container">
 					<a href="../" class="logo">
@@ -56,7 +119,7 @@
 			
 					<span class="separator"></span>
 			
-					<!--<ul class="notifications">
+			<!--		<ul class="notifications">
 						<li>
 							<a href="#" class="dropdown-toggle notification-icon" data-toggle="dropdown">
 								<i class="fa fa-tasks"></i>
@@ -282,7 +345,7 @@
 											<span>Mail</span>
 										</a>
 									</li>
-									<li class="nav-parent">
+									<li class="nav-parent nav-expanded nav-active">
 										<a>
 											<i class="fa fa-copy" aria-hidden="true"></i>
 											<span>General Information</span>
@@ -311,7 +374,7 @@
 											</li>
 										</ul>
 									</li>
-									<li class="nav-parent nav-expanded nav-active">
+									<li class="nav-parent">
 										<a>
 											<i class="fa fa-table" aria-hidden="true"></i>
 											<span>User Info</span>
@@ -371,10 +434,11 @@
 					</div>
 				
 				</aside>
+				<!-- end: sidebar -->
 
 				<section role="main" class="content-body">
 					<header class="page-header">
-						<h2>User(s) Information</h2>
+						<h2>Settings</h2>
 					
 						<div class="left-wrapper pull-left">
 							<ol class="breadcrumbs">
@@ -386,71 +450,51 @@
 							</ol>
 						</div>
 					</header>
-						<section class="panel">
-							<header class="panel-heading">
-								<div class="panel-actions">
-									<a href="#" class="fa fa-caret-down"></a>
+
+					<!-- start: page -->
+					<div class="row">
+						<div class="col-md-6 col-lg-12 col-xl-6">
+							<section class="panel">
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-lg-12">
+											<h2>Select List of API's Needed in login Page</h2>
+											<form action="#" method="post">
+											<ul class="list-group">
+												<?php
+													$users = DB::table('switchref')->get();
+													foreach ($users as $title) {
+														echo "<li class=\"list-group-item\" type=\"".$title->name."\" style=\"padding: 30px 15px;\">".$title->name;
+													    if($title->type==0)
+													    {
+													    	echo "<span class=\"right-wrapper pull-right\" ><label class=\"switch\">
+															  <input type=\"checkbox\">
+															  <div class=\"slider round\"></div>
+															</label></span>";
+													    }
+													    else
+													    {
+													    	echo "<span class=\"right-wrapper pull-right\" ><label class=\"switch\">
+															  <input type=\"checkbox\" checked>
+															  <div class=\"slider round\"></div>
+															</label></span>";
+													    }
+													    echo "</li>";
+													}
+												?>
+											</ul>
+											<input type="submit" name="submit" value="Save" class="btn btn-primary btn-block"/>
+											</form>
+										</div>
+									</div>
 								</div>
-						
-								<h2 class="panel-title">Users</h2>
-							</header>
-							<div class="panel-body">
-								<table class="table table-bordered table-striped mb-none" id="datatable-editable">
-									<thead>
-										<tr>
-											<th>UserName</th>
-											<th>Email ID</th>
-											<th>API</th>
-											<th>Actions</th>
-										</tr>
-									</thead>
-									<tbody>
-										
-											<?php 
-											$users = DB::table('users')->get();
-											
-											foreach ($users as $title) {
-												echo "<tr class=\"gradeX\">";
-											    echo "<td>".$title->name."</td>";
-											    echo "<td>".$title->email."</td>";
-											    echo "<td>".$title->API."</td>";
-											    echo "<td class=\"actions\">
-												<a href=\"#\" class=\"on-default remove-row\"><i class=\"fa fa-trash-o\"></i></a>
-											</td></tr>";
-											}
-											?>
-										
-									</tbody>
-								</table>
-							</div>
-						</section>
+							</section>
+						</div>
+					</div>
 					<!-- end: page -->
 				</section>
 			</div>
 		</section>
-
-		<div id="dialog" class="modal-block mfp-hide">
-			<section class="panel">
-				<header class="panel-heading">
-					<h2 class="panel-title">Are you sure?</h2>
-				</header>
-				<div class="panel-body">
-					<div class="modal-wrapper">
-						<div class="modal-text">
-							<p>Are you sure that you want to delete this row?</p>
-						</div>
-					</div>
-				</div>
-				<footer class="panel-footer">
-					<div class="row">
-						<div class="col-md-12 text-right">
-							<button id="dialogConfirm" class="btn btn-primary">Confirm</button>
-							<button id="dialogCancel" class="btn btn-default">Cancel</button>
-						</div>
-					</div>
-				</footer>
-			</section>
-		</div>
 
 		<!-- Vendor -->
 		<script src="/assets/vendor/jquery/jquery.js"></script>
@@ -462,9 +506,31 @@
 		<script src="/assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
 		
 		<!-- Specific Page Vendor -->
-		<script src="/assets/vendor/select2/select2.js"></script>
-		<script src="/assets/vendor/jquery-datatables/media/js/jquery.dataTables.js"></script>
-		<script src="/assets/vendor/jquery-datatables-bs3/assets/js/datatables.js"></script>
+		<script src="/assets/vendor/jquery-ui/js/jquery-ui-1.10.4.custom.js"></script>
+		<script src="/assets/vendor/jquery-ui-touch-punch/jquery.ui.touch-punch.js"></script>
+		<script src="/assets/vendor/jquery-appear/jquery.appear.js"></script>
+		<script src="/assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+		<script src="/assets/vendor/jquery-easypiechart/jquery.easypiechart.js"></script>
+		<script src="/assets/vendor/flot/jquery.flot.js"></script>
+		<script src="/assets/vendor/flot-tooltip/jquery.flot.tooltip.js"></script>
+		<script src="/assets/vendor/flot/jquery.flot.pie.js"></script>
+		<script src="/assets/vendor/flot/jquery.flot.categories.js"></script>
+		<script src="/assets/vendor/flot/jquery.flot.resize.js"></script>
+		<script src="/assets/vendor/jquery-sparkline/jquery.sparkline.js"></script>
+		<script src="/assets/vendor/raphael/raphael.js"></script>
+		<script src="/assets/vendor/morris/morris.js"></script>
+		<script src="/assets/vendor/gauge/gauge.js"></script>
+		<script src="/assets/vendor/snap-svg/snap.svg.js"></script>
+		<script src="/assets/vendor/liquid-meter/liquid.meter.js"></script>
+		<script src="/assets/vendor/jqvmap/jquery.vmap.js"></script>
+		<script src="/assets/vendor/jqvmap/data/jquery.vmap.sampledata.js"></script>
+		<script src="/assets/vendor/jqvmap/maps/jquery.vmap.world.js"></script>
+		<script src="/assets/vendor/jqvmap/maps/continents/jquery.vmap.africa.js"></script>
+		<script src="/assets/vendor/jqvmap/maps/continents/jquery.vmap.asia.js"></script>
+		<script src="/assets/vendor/jqvmap/maps/continents/jquery.vmap.australia.js"></script>
+		<script src="/assets/vendor/jqvmap/maps/continents/jquery.vmap.europe.js"></script>
+		<script src="/assets/vendor/jqvmap/maps/continents/jquery.vmap.north-america.js"></script>
+		<script src="/assets/vendor/jqvmap/maps/continents/jquery.vmap.south-america.js"></script>
 		
 		<!-- Theme Base, Components and Settings -->
 		<script src="/assets/javascripts/theme.js"></script>
@@ -477,6 +543,6 @@
 
 
 		<!-- Examples -->
-		<script src="/assets/javascripts/tables/examples.datatables.editable.js"></script>
+		<script src="/assets/javascripts/dashboard/examples.dashboard.js"></script>
 	</body>
 </html>
