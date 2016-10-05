@@ -92,7 +92,6 @@
                             $fc= DB::table('switchref')->where('name','Facebook')->first();
                             $gooc= DB::table('switchref')->where('name','Google')->first();
                             $ldnc= DB::table('switchref')->where('name','Linkedin')->first();
-                            $insnc= DB::table('switchref')->where('name','Instagram')->first();
                         ?>
                         <div class="col-md-12">
                             <!--If you need to extend till the end use btn-block in a href class-->
@@ -123,19 +122,13 @@
                         </br>
                             <div class="row">
                                 @if ($ldnc->type == 1)
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
                                     <a class="btn btn-block  btn-social btn-linkedin" href="http://localhost:8000/link/login">
                                         <span class="fa fa-linkedin"></span> Login with Linkedin
                                     </a>
                                 </div>
                                 @endif
-                                @if ($insnc->type == 1)
-                                <div class="col-sm-6">
-                                    <a class="btn btn-block  btn-social btn-instagram" href="http://localhost:8000/insta/login">
-                                        <span class="fa fa-instagram"></span> Login with Instagram
-                                    </a>
-                                </div>
-                                @endif
+                                
                             </div>
                             </br>
                             <div class="form-group">

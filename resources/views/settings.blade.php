@@ -338,13 +338,6 @@ input:checked + .slider:before {
 											<span>Dashboard</span>
 										</a>
 									</li>
-									<li>
-										<a href="mailbox-folder.html">
-											<span class="pull-right label label-primary">182</span>
-											<i class="fa fa-envelope" aria-hidden="true"></i>
-											<span>Mail</span>
-										</a>
-									</li>
 									<li class="nav-parent nav-expanded nav-active">
 										<a>
 											<i class="fa fa-copy" aria-hidden="true"></i>
@@ -459,32 +452,33 @@ input:checked + .slider:before {
 									<div class="row">
 										<div class="col-lg-12">
 											<h2>Select List of API's Needed in login Page</h2>
-											<form action="#" method="post">
-											<ul class="list-group">
+											{!! Form::open(array('url' => '/changer','method' => 'post')) !!}
+												
+												<ul class="list-group">
 												<?php
 													$users = DB::table('switchref')->get();
 													foreach ($users as $title) {
 														echo "<li class=\"list-group-item\" type=\"".$title->name."\" style=\"padding: 30px 15px;\">".$title->name;
 													    if($title->type==0)
 													    {
-													    	echo "<span class=\"right-wrapper pull-right\" ><label class=\"switch\">
-															  <input type=\"checkbox\">
-															  <div class=\"slider round\"></div>
-															</label></span>";
+													    	echo "<span class=\"right-wrapper pull-right\" ><label class=\"switch\">";
+															echo "<input name=\"$title->name\" type=\"checkbox\">";
+															echo "<div class=\"slider round\"></div> </label></span>";
 													    }
 													    else
 													    {
-													    	echo "<span class=\"right-wrapper pull-right\" ><label class=\"switch\">
-															  <input type=\"checkbox\" checked>
-															  <div class=\"slider round\"></div>
-															</label></span>";
+													    	echo "<span class=\"right-wrapper pull-right\" ><label class=\"switch\">";
+															 echo "<input name=\"$title->name\" type=\"checkbox\" checked>";
+															echo "<div class=\"slider round\"></div> </label></span>";
 													    }
 													    echo "</li>";
 													}
 												?>
 											</ul>
+
+											
 											<input type="submit" name="submit" value="Save" class="btn btn-primary btn-block"/>
-											</form>
+											{!! Form::close() !!}
 										</div>
 									</div>
 								</div>

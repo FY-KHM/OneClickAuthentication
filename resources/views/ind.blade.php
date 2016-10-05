@@ -278,13 +278,6 @@
 											<span>Dashboard</span>
 										</a>
 									</li>
-									<li>
-										<a href="mailbox-folder.html">
-											<span class="pull-right label label-primary">182</span>
-											<i class="fa fa-envelope" aria-hidden="true"></i>
-											<span>Mail</span>
-										</a>
-									</li>
 									<li class="nav-parent nav-expanded nav-active">
 										<a>
 											<i class="fa fa-copy" aria-hidden="true"></i>

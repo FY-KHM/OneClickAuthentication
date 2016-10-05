@@ -36,6 +36,9 @@ Route::get('link/callback', 'APIController@licallback');
 Route::get('insta/login', 'APIController@inlogin');
 Route::get('insta/callback', 'APIController@incallback');
 
+
+Route::post('/changer','DeveloperController@changeit');
+
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
