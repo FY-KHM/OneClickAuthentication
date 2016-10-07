@@ -334,28 +334,28 @@
 									<ul>
 										<li>
 											<span class="stats-title">API Integration</span>
-											<span class="stats-complete">80%</span>
+											<span class="stats-complete">100%</span>
 											<div class="progress">
-												<div class="progress-bar progress-bar-primary progress-without-number" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
-													<span class="sr-only">80% Complete</span>
+												<div class="progress-bar progress-bar-primary progress-without-number" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+													<span class="sr-only">100% Complete</span>
 												</div>
 											</div>
 										</li>
 										<li>
 											<span class="stats-title">Developer Dashboard</span>
-											<span class="stats-complete">30%</span>
+											<span class="stats-complete">100%</span>
 											<div class="progress">
-												<div class="progress-bar progress-bar-primary progress-without-number" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
-													<span class="sr-only">30% Complete</span>
+												<div class="progress-bar progress-bar-primary progress-without-number" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+													<span class="sr-only">100% Complete</span>
 												</div>
 											</div>
 										</li>
 										<li>
 											<span class="stats-title">Overall Completion</span>
-											<span class="stats-complete">50%</span>
+											<span class="stats-complete">100%</span>
 											<div class="progress">
-												<div class="progress-bar progress-bar-primary progress-without-number" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
-													<span class="sr-only">50% Complete</span>
+												<div class="progress-bar progress-bar-primary progress-without-number" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+													<span class="sr-only">100% Complete</span>
 												</div>
 											</div>
 										</li>
