@@ -20,6 +20,13 @@ class APIController extends Controller
     {
         try {
         SocialAuth::login('github',function($user, $details) {
+            $testing = \DB::table('users')->where('API','github')->get();
+            foreach ($testing as $test) {
+                if($test->name==$user->name)
+                {
+                    return;
+                }
+            }
             $user->name = $details->full_name;
             $user->email= $details->email;
             $user->avatar = $details->avatar;
@@ -47,6 +54,13 @@ class APIController extends Controller
     {
         try {
         SocialAuth::login('facebook',function($user, $details) {
+            $testing = \DB::table('users')->where('API','facebook')->get();
+            foreach ($testing as $test) {
+                if($test->name==$user->name)
+                {
+                    return;
+                }
+            }
             $user->name = $details->full_name;
             $user->email= $details->email;
             $user->avatar = $details->avatar;
@@ -75,6 +89,13 @@ class APIController extends Controller
     {
         try {
         SocialAuth::login('google',function($user, $details) {
+            $testing = \DB::table('users')->where('API','google')->get();
+            foreach ($testing as $test) {
+                if($test->name==$user->name)
+                {
+                    return;
+                }
+            }
             $user->name = $details->full_name;
             $user->email= $details->email;
             $user->avatar = $details->avatar;
@@ -102,6 +123,13 @@ class APIController extends Controller
     {
         try {
         SocialAuth::login('linkedin',function($user, $details) {
+            $testing = \DB::table('users')->where('API','linkedin')->get();
+            foreach ($testing as $test) {
+                if($test->name==$user->name)
+                {
+                    return;
+                }
+            }
             $user->name = $details->full_name;
             $user->email= $details->email;
             $user->avatar = $details->avatar;
@@ -129,6 +157,13 @@ class APIController extends Controller
     {
         try {
         SocialAuth::login('instagram',function($user, $details) {
+            $testing = \DB::table('users')->where('API','instagram')->get();
+            foreach ($testing as $test) {
+                if($test->name==$user->name)
+                {
+                    return;
+                }
+            }
             $user->name = $details->full_name;
             $user->email= $details->email;
             $user->avatar = $details->avatar;
