@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use SocialAuth;
 use Hash;
 use Auth;
+use Mail;
 use Redirect;
 use App\User;
 use App\Http\Requests;
@@ -29,10 +30,17 @@ class APIController extends Controller
             }
             $user->name = $details->full_name;
             $user->email= $details->email;
+            $emailtosend = $details->email;
             $user->avatar = $details->avatar;
             $user->API = "github";
             $user->role = "user";
             $user->password=Hash::make('github123');
+            Mail::send('mailconf',['email'=> $emailtosend], function($message) use ($emailtosend)
+            {
+                $message->from('mohanrajan1996@gmail.com','Mohan Rajan');
+                $message->to($emailtosend);
+                $message->subject('Confirmation Email from Github API');
+            });
             $user->save();
         });
         } catch (ApplicationRejectedException $e) {
@@ -67,6 +75,13 @@ class APIController extends Controller
             $user->API = "facebook";
             $user->role = "user";
             $user->password = Hash::make('facebook123');
+            $emailtosend = $details->email;
+            Mail::send('mailconf',['email'=> $emailtosend], function($message) use ($emailtosend)
+            {
+                $message->from('mohanrajan1996@gmail.com','Mohan Rajan');
+                $message->to($emailtosend);
+                $message->subject('Confirmation Email from Facebook API');
+            });
             $user->save();
         });
         } catch (ApplicationRejectedException $e) {
@@ -102,6 +117,13 @@ class APIController extends Controller
             $user->API = "google";
             $user->role = "user";
             $user->password = Hash::make('google123');
+            $emailtosend = $details->email;
+            Mail::send('mailconf',['email'=> $emailtosend], function($message) use ($emailtosend)
+            {
+                $message->from('mohanrajan1996@gmail.com','Mohan Rajan');
+                $message->to($emailtosend);
+                $message->subject('Confirmation Email from Google API');
+            });
             $user->save();
         });
         } catch (ApplicationRejectedException $e) {
@@ -136,6 +158,13 @@ class APIController extends Controller
             $user->API = "linkedin";
             $user->role = "user";
             $user->password = Hash::make('linkedin123');
+            $emailtosend = $details->email;
+            Mail::send('mailconf',['email'=> $emailtosend], function($message) use ($emailtosend)
+            {
+                $message->from('mohanrajan1996@gmail.com','Mohan Rajan');
+                $message->to($emailtosend);
+                $message->subject('Confirmation Email from LinkedIn API');
+            });
             $user->save();
         });
         } catch (ApplicationRejectedException $e) {
@@ -170,6 +199,13 @@ class APIController extends Controller
             $user->API = "instagram";
             $user->role = "user";
             $user->password = Hash::make('instagram123');
+            $emailtosend = $details->email;
+            Mail::send('mailconf',['email'=> $emailtosend], function($message) use ($emailtosend)
+            {
+                $message->from('mohanrajan1996@gmail.com','Mohan Rajan');
+                $message->to($emailtosend);
+                $message->subject('Confirmation Email from Instagram API');
+            });
             dd($details);
             //$user->save();
         });
